@@ -16,12 +16,12 @@ const StudentView = (props) => {
 
       <a href={`mailto:${student.email}`}>{student.email}</a>
       <br />
-      {student.gpa} GPA
+      GPA: {(student.gpa !== null) ? student.gpa : `unknown`}
       <br />
 
       <img className="student-image" src={student.imageUrl} alt={student.name}></img>
 
-      <h3>Attends: {(student.campus) ? <Link to={`/campus/${student.campus.id}`}>{student.campus.name}</Link> : `Not enrolled in any campus`}</h3>
+      <h3>Attends: {(student.campus !== null) ? <Link to={`/campus/${student.campus.id}`}>{student.campus.name}</Link> : `Not enrolled in any campus`}</h3>
     </div>
   );
 
