@@ -11,6 +11,14 @@ const StudentView = (props) => {
   return (
     <div>
       <h1>{student.firstname + " " + student.lastname}</h1>
+
+      <a href={`mailto:${student.email}`}>{student.email}</a>
+      <br />
+      {student.gpa} GPA
+      <br />
+
+      <img className="student-image" src={student.imageUrl} alt={student.name}></img>
+
       <h3>{student.campus.name}</h3>
     </div>
   );
