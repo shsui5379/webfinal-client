@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+
 /*==================================================
 StudentView.js
 
@@ -19,7 +21,7 @@ const StudentView = (props) => {
 
       <img className="student-image" src={student.imageUrl} alt={student.name}></img>
 
-      <h3>{student.campus.name}</h3>
+      <h3>Attends: {(student.campus) ? <Link to={`/campus/${student.campus.id}`}>{student.campus.name}</Link> : `Not enrolled in any campus`}</h3>
     </div>
   );
 
