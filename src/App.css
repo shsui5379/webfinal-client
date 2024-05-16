@@ -8,6 +8,7 @@
   color: #61dafb;
 }
 
-.campus-image {
+.campus-image,
+.student-image {
   width: 33%;
 }

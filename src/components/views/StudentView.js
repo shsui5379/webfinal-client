@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+
 /*==================================================
 StudentView.js
 
@@ -11,7 +13,15 @@ const StudentView = (props) => {
   return (
     <div>
       <h1>{student.firstname + " " + student.lastname}</h1>
-      <h3>{student.campus.name}</h3>
+
+      <a href={`mailto:${student.email}`}>{student.email}</a>
+      <br />
+      GPA: {(student.gpa !== null) ? student.gpa : `unknown`}
+      <br />
+
+      <img className="student-image" src={student.imageUrl} alt={student.name}></img>
+
+      <h3>Attends: {(student.campus !== null) ? <Link to={`/campus/${student.campus.id}`}>{student.campus.name}</Link> : `Not enrolled in any campus`}</h3>
     </div>
   );
 
