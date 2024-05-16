@@ -26,14 +26,15 @@ const AllCampusesView = (props) => {
           <h4>campus id: {campus.id}</h4>
           <p>{campus.address}</p>
           <p>{campus.description}</p>
-          <hr/>
+          <img src={campus.imageUrl}></img>
+          <hr />
         </div>
       ))}
-      <br/>
+      <br />
       <Link to={`/`}>
         <button>Add New Campus</button>
       </Link>
-      <br/><br/>
+      <br /><br />
     </div>
   );
 };
