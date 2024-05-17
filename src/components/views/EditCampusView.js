@@ -64,7 +64,7 @@ const EditCampusView = (props) => {
                         <br />
 
                         <label style={{ color: '#11153e', fontWeight: 'bold' }}>Description: </label>
-                        <input type="text" name="description" value={campus.description} onChange={(e) => handleChange(e)} />
+                        <textarea name="description" value={campus.description} onChange={(e) => handleChange(e)} />
                         <br />
                         <br />
 

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 // Take in props data to construct the component
 const CampusView = (props) => {
-  const { campus } = props;
+  const { campus, editStudent, fetchCampus } = props;
 
   // Render a single Campus view with list of its students
   return (
@@ -27,7 +27,8 @@ const CampusView = (props) => {
       <br />
       <h2>Students:</h2>
       {
-        (campus.students.length === 0) ? (<div>No enrolled students</div>) :
+        (campus.students.length === 0) ? (<div>No enrolled students<br /><Link to={`/newstudent/${campus.id}`}>
+          <Button variant="contained" color="primary">Enroll new student</Button></Link></div>) :
           campus.students.map(student => {
             let name = student.firstname + " " + student.lastname;
             return (
@@ -35,10 +36,20 @@ const CampusView = (props) => {
                 <Link to={`/student/${student.id}`}>
                   <h3>{name}</h3>
                 </Link>
+                <button onClick={() => {
+                  let newStudent = { ...student };
+                  delete newStudent.campusId;
+                  editStudent(newStudent);
+                  fetchCampus(campus.id);
+                }}>Unenroll</button>
               </div>
             );
           })
       }
+      <br />
+      <Link to={`/newstudent/${campus.id}`}>
+        <Button variant="contained" color="primary">Enroll new student</Button>
+      </Link>
     </div>
   );
 };
