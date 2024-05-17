@@ -18,6 +18,7 @@ class EditCampusContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: "",
             name: "",
             address: "",
             description: "",
@@ -29,6 +30,23 @@ class EditCampusContainer extends Component {
 
     componentDidMount() {
         this.props.fetchCampus(this.props.match.params.id);
+
+        this.setState({
+            id: this.props.campus.id,
+            name: this.props.campus.name,
+            address: this.props.campus.address,
+            description: this.props.campus.description,
+            imageUrl: this.props.campus.imageUrl
+        })
+    }
+
+    getCampus = () => {
+        return {
+            name: this.state.name,
+            address: this.state.address,
+            description: this.state.description,
+            imageUrl: this.state.imageUrl
+        }
     }
 
     // Capture input data when it is entered
@@ -43,6 +61,7 @@ class EditCampusContainer extends Component {
         event.preventDefault();  // Prevent browser reload/refresh after submit.
 
         let campus = {
+            id: this.state.id,
             name: this.state.name,
             address: this.state.address,
             description: this.state.description,
@@ -54,6 +73,7 @@ class EditCampusContainer extends Component {
 
         // Update state, and trigger redirect to show the edited campus
         this.setState({
+            id: "",
             name: "",
             address: "",
             description: "",
@@ -82,7 +102,7 @@ class EditCampusContainer extends Component {
                 <EditCampusView
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit}
-                    campus={this.props.campus}
+                    getCampus={this.getCampus}
                 />
             </div>
         );
@@ -102,7 +122,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
     return ({
         editCampus: (campus) => dispatch(editCampusThunk(campus)),
-        fetchCampus: (id) => dispatch(fetchCampusThunk(id))
+        fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
     })
 }
 

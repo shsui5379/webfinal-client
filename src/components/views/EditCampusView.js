@@ -35,8 +35,10 @@ const useStyles = makeStyles(() => ({
 }));
 
 const EditCampusView = (props) => {
-    const { handleChange, handleSubmit } = props;
+    const { handleChange, handleSubmit, getCampus } = props;
     const classes = useStyles();
+
+    let campus = getCampus();
 
     // Render a Edit Campus view with an input form
     return (
@@ -47,27 +49,27 @@ const EditCampusView = (props) => {
                 <div className={classes.formContainer}>
                     <div className={classes.formTitle}>
                         <Typography style={{ fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e' }}>
-                            Add a Campus
+                            Edit a Campus
                         </Typography>
                     </div>
                     <form style={{ textAlign: 'center' }} onSubmit={(e) => handleSubmit(e)}>
                         <label style={{ color: '#11153e', fontWeight: 'bold' }}>Name: </label>
-                        <input type="text" name="name" value={this.props.campus.name} required onChange={(e) => handleChange(e)} />
+                        <input type="text" name="name" value={campus.name} required onChange={(e) => handleChange(e)} />
                         <br />
                         <br />
 
                         <label style={{ color: '#11153e', fontWeight: 'bold' }}>Address: </label>
-                        <input type="text" name="address" value={this.props.campus.address} required onChange={(e) => handleChange(e)} />
+                        <input type="text" name="address" value={campus.address} required onChange={(e) => handleChange(e)} />
                         <br />
                         <br />
 
                         <label style={{ color: '#11153e', fontWeight: 'bold' }}>Description: </label>
-                        <input type="text" name="description" value={this.props.campus.description} onChange={(e) => handleChange(e)} />
+                        <input type="text" name="description" value={campus.description} onChange={(e) => handleChange(e)} />
                         <br />
                         <br />
 
                         <label style={{ color: '#11153e', fontWeight: 'bold' }}>Image URL: </label>
-                        <input type="url" name="imageUrl" value={this.props.campus.imageUrl} onChange={(e) => handleChange(e)} />
+                        <input type="url" name="imageUrl" value={campus.imageUrl} onChange={(e) => handleChange(e)} />
                         <br />
                         <br />
 
