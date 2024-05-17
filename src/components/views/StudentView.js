@@ -1,3 +1,4 @@
+import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 /*==================================================
@@ -20,6 +21,12 @@ const StudentView = (props) => {
       <br />
 
       <img className="student-image" src={student.imageUrl} alt={student.name}></img>
+
+      <br />
+      <Link to={`/editstudent/${student.id}`}>
+        <Button variant="contained" color="primary">Edit Student</Button>
+      </Link>
+      <br />
 
       <h3>Attends: {(student.campus !== null) ? <Link to={`/campus/${student.campus.id}`}>{student.campus.name}</Link> : `Not enrolled in any campus`}</h3>
     </div>
