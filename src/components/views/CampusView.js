@@ -4,6 +4,7 @@ CampusView.js
 The Views component is responsible for rendering web page with data provided by the corresponding Container component.
 It constructs a React component to display a single campus and its students (if any).
 ================================================== */
+import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 // Take in props data to construct the component
@@ -17,6 +18,12 @@ const CampusView = (props) => {
       <p>{campus.address}</p>
       <p>{campus.description}</p>
       <img className="campus-image" src={campus.imageUrl} alt={campus.name}></img>
+      <br />
+
+      <Link to={`/editcampus/${campus.id}`}>
+        <Button variant="contained" color="primary">Edit Campus</Button>
+      </Link>
+
       <br />
       <h2>Students:</h2>
       {
