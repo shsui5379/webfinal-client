@@ -7,6 +7,7 @@ It constructs a React component to display the new student page.
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { useParams } from 'react-router-dom';
 
 // Create styling for the input form
 const useStyles = makeStyles(() => ({
@@ -35,8 +36,10 @@ const useStyles = makeStyles(() => ({
 }));
 
 const NewStudentView = (props) => {
-  const { handleChange, handleSubmit } = props;
+  const { handleChange, handleSubmit, getState } = props;
   const classes = useStyles();
+
+  let id = useParams().id;
 
   // Render a New Student view with an input form
   return (
@@ -77,7 +80,7 @@ const NewStudentView = (props) => {
             <br />
 
             <label style={{ color: '#11153e', fontWeight: 'bold' }}>Campus Id: </label>
-            <input type="text" name="campusId" onChange={(e) => handleChange(e)} />
+            <input type="text" name="campusId" value={(id !== undefined) ? id : getState().id} disabled={id !== undefined} onChange={(e) => handleChange(e)} />
             <br />
             <br />
 

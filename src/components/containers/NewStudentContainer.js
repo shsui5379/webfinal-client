@@ -29,6 +29,11 @@ class NewStudentContainer extends Component {
     };
   }
 
+  getState = () => {
+    return { id: this.state.id }
+  }
+
+
   // Capture input data when it is entered
   handleChange = event => {
     this.setState({
@@ -84,6 +89,7 @@ class NewStudentContainer extends Component {
         <NewStudentView
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          getState={this.getState}
         />
       </div>
     );
