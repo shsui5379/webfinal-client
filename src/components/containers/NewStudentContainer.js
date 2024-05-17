@@ -33,6 +33,12 @@ class NewStudentContainer extends Component {
     return { id: this.state.id }
   }
 
+  componentDidMount() {
+    if (this.props.match.params.id !== undefined) {
+      this.setState({ campusId: this.props.match.params.id });
+    }
+  }
+
 
   // Capture input data when it is entered
   handleChange = event => {
