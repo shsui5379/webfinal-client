@@ -27,8 +27,7 @@ const CampusView = (props) => {
       <br />
       <h2>Students:</h2>
       {
-        (campus.students.length === 0) ? (<div>No enrolled students<br /><Link to={`/newstudent/${campus.id}`}>
-          <Button variant="contained" color="primary">Enroll new student</Button></Link></div>) :
+        (campus.students.length === 0) ? (<div>No enrolled students.</div>) :
           campus.students.map(student => {
             let name = student.firstname + " " + student.lastname;
             return (
