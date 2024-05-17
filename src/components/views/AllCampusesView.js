@@ -9,9 +9,16 @@ import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 
 const AllCampusesView = (props) => {
+  const { deleteCampus } = props;
   // If there is no campus, display a message.
   if (!props.allCampuses.length) {
-    return <div>There are no campuses.</div>;
+    return (
+      <div><p>There are no campuses.</p>
+        <Link to={`/newcampus`}>
+          <Button variant="contained" color="primary">Add New Campus</Button>
+        </Link>
+      </div>
+    );
   }
 
   // If there is at least one campus, render All Campuses view 
@@ -28,6 +35,8 @@ const AllCampusesView = (props) => {
           <p>{campus.address}</p>
           <p>{campus.description}</p>
           <img className="campus-image" src={campus.imageUrl} alt={campus.name}></img>
+          <br />
+          <button onClick={() => deleteCampus(campus.id)}>Delete</button>
           <hr />
         </div>
       ))}
